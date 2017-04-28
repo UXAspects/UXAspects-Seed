@@ -11,17 +11,23 @@ import { LeftNavigationComponent } from './shared/left-navigation/left-navigatio
 import { ContentHeaderComponent } from './shared/content-header/content-header.component';
 import { SampleComponent } from './components/samples/sample/sample.component';
 import { RouterModule, Routes } from "@angular/router";
-import './wrappers/expand-input-wrapper/ux-input-expand-ng1.directive';
-import './wrappers/help-center-menu-wrapper/ux-help-center-menu-ng1.directive';
+import './wrappers/expand-input-wrapper/ux-expand-input-ng1.directive.ts';
 
 // create a singleton of the upgrade adapter
 export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
 
 const APPROUTES: Routes = [
-    { path: 'samples', 
+    {
+        path: 'samples',
+        data: {
+            title: 'Sample'
+        },
         children: [{
             path: 'sample',
-            component: SampleComponent
+            component: SampleComponent,
+            data: {
+                title: 'Sample 1'
+            }
         }]
     },
     { path: '', redirectTo: '/samples/sample', pathMatch: 'full' },
@@ -39,8 +45,7 @@ const APPROUTES: Routes = [
         LeftNavigationComponent,
         ContentHeaderComponent,
         SampleComponent,
-        upgradeAdapter.upgradeNg1Component('uxInputExpandNg1'),
-        upgradeAdapter.upgradeNg1Component('uxHelpCenterMenuNg1')
+        upgradeAdapter.upgradeNg1Component('uxExpandInputNg1'),
     ]
 })
 export class AppModule {

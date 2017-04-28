@@ -14,14 +14,13 @@ export class LeftNavigationComponent implements OnDestroy {
 
     previousWindowWidth: number;
     collapseWidth: number;
+    resizeObservable: any;
 
     constructor(@Inject('$navigationMenu') private $navigationMenu: any) {
-        document.body.classList.add("animate-navbar");        
-
         this.previousWindowWidth = window.innerWidth;
         this.collapseWidth = this.$navigationMenu.collapseAtWidth();
 
-        Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(this.onResize.bind(this));
+        this.resizeObservable = Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(this.onResize.bind(this));
     }
 
     onResize(event: Event) {
@@ -39,7 +38,7 @@ export class LeftNavigationComponent implements OnDestroy {
     }
 
     ngOnDestroy() {
-        document.removeEventListener('resize');
+        this.resizeObservable.unsubscribe();
     }
 
 

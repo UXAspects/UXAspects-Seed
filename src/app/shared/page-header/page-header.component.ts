@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 
 @Component({
     selector: 'my-page-header',
@@ -6,18 +6,24 @@ import { Component } from '@angular/core';
     styleUrls: ['./page-header.component.less']
 })
 
-export class PageHeaderComponent {
+export class PageHeaderComponent implements AfterViewInit {
 
-    goBack() {}
+    expanded: boolean;
+    searchInput: HTMLInputElement;
+
+    constructor(private elementRef: ElementRef) { }
+
+    ngAfterViewInit() {
+        this.searchInput = this.elementRef.nativeElement.querySelector('input');
+    }
+
+    goBack() { }
 
     expandSearch(event: any) {
-        let element = event.target;
-        while ((element = element.parentElement) && !element.classList.contains('navbar-static-top'));
-        element.classList.toggle('show-search');
-        if(element.classList.contains("show-search")){
-            element = element.getElementsByClassName("navbar-form-search")[0];
-            element = element.getElementsByTagName("INPUT")[0];
-            element.focus();
+        this.expanded = !this.expanded;
+
+        if (this.expanded) {
+            setTimeout(_ => this.searchInput.focus());
         }
     }
 }

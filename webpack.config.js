@@ -3,7 +3,6 @@ var path = require('path');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 
@@ -37,6 +36,11 @@ module.exports = {
         }, {
             test: /\.less$/,
             use: ['raw-loader', 'less-loader']
+        }, {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                use: 'css-loader'
+            })
         }]
     },
 
@@ -53,7 +57,9 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: './src/index.html'
-        })
+        }),
+
+        new ExtractTextPlugin("styles.css")
         
     ],
 

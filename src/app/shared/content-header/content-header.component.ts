@@ -1,67 +1,52 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd, ActivatedRouteSnapshot } from "@angular/router";
+import 'rxjs/add/operator/filter';
 
 @Component({
     selector: 'my-content-header',
     templateUrl: './content-header.component.html'
 })
 export class ContentHeaderComponent {
-    
-    activeRoute: string[];
-    breadcrumb = [{
-        link: "samples",
-        title: "Samples",
-        children: [{
-            link: "sample",
-            title: "Sample 1"
-        }]
-    },{
-        link: 'test',
-        title: 'test'
-    }];
-    titles: Array<string> = [];
-    heading: string;
 
-    constructor(router:Router) {
-        router.events.subscribe((event) => {
-            if(event instanceof NavigationEnd){
-                let route = '';
-                if(event.urlAfterRedirects){
-                    route = event.urlAfterRedirects;
-                } else {
-                    route = event.url;
-                }
-                this.activeRoute = route.split('/');
-                this.activeRoute.shift();
-                
-                for(let i = 0; i < this.activeRoute.length; i++) {
-                    for(let j = 0; j < Object.keys(this.breadcrumb).length; j++) {
-                        if(this.breadcrumb[j].link === this.activeRoute[0]){
-                            this.titles.push(this.breadcrumb[j].title);
-                            this.activeRoute.shift();
-                            this.getChildTitles(this.breadcrumb[j]);
-                        }
-                    }
-                }
-            }
+    heading: string;
+    breadcrumbs: string[] = [];
+
+    constructor(router: Router) {
+
+        router.events.filter(event => event instanceof NavigationEnd).subscribe((event) => {
+            let activeRoute = this.getActiveRoute(router.routerState.snapshot.root);
+            
+            // get the heading from the deepest route
+            this.heading = activeRoute.data.title;
+            this.breadcrumbs = this.getBreadcrumbs(activeRoute);
         });
     }
 
-    getChildTitles(currentBreadcrumb) {
-        currentBreadcrumb = currentBreadcrumb;
-        while(currentBreadcrumb.children){
-            currentBreadcrumb = this.getTitle(currentBreadcrumb);
+    getActiveRoute(route: ActivatedRouteSnapshot) {
+        let activeRoute = route;
+
+        while (activeRoute.children.length !== 0) {
+            activeRoute = activeRoute.firstChild;
         }
-        this.heading = this.titles.pop();
+
+        return activeRoute;
     }
 
-    getTitle(currentBreadcrumb) {
-        for(let i = 0; Object.keys(currentBreadcrumb).length; i++){
-            if(currentBreadcrumb.children[i].link === this.activeRoute[0]) {
-                this.titles.push(currentBreadcrumb.children[i].title);
-                this.activeRoute.shift();
-                return currentBreadcrumb.children[i];
+    getBreadcrumbs(route: ActivatedRouteSnapshot) {
+        let breadcrumbs = [];
+        
+        // ignore the immediate route - start with parent
+        route = route.parent;
+
+        // go through each parent and get their titles
+        while (route.parent) {
+            if (route.data.title) {
+                breadcrumbs.push(route.data.title);
             }
+
+            route = route.parent;
         }
+
+        return breadcrumbs.reverse();
     }
 }

@@ -1,4 +1,4 @@
-angular.module('app').directive('uxInputExpandNg1', function() {
+angular.module('app').directive('uxExpandInputNg1', function() {
     return {
         restrict: 'E',
         scope: {

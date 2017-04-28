@@ -5,11 +5,6 @@ import * as $ from 'jquery';
 (<any>window).$ = $;
 (<any>window).jQuery = $;
 
-// import only the required jquery ui functionality
-// import 'jquery-ui/ui/unique-id';
-// import 'jquery-ui/ui/position';
-// import 'jquery-ui/ui/widgets/sortable';
-
 import 'bootstrap';
 
 /*
@@ -20,9 +15,10 @@ import 'angular';
 import 'ux-aspects/dist/ng1/ux-aspects-ng1';
 
 /*
-  Import Angular 1 Components and their dependencies
+  Import CSS
 */
-import './app/app.module';
+import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
+import '../bower_components/ux-aspects/dist/styles/ux-aspects.css';
 
 /*
     Import Angular Libraries

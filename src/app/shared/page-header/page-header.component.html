@@ -1,11 +1,11 @@
 <div class="affix-container">
-    <nav class="navbar navbar-static-top navbar-static-top-light" ngClass="{'back-button': backButton, 'content-panel':contentPanel}"
+    <nav class="navbar navbar-static-top navbar-static-top-light" [class.show-search]="expanded" ngClass="{'back-button': backButton, 'content-panel':contentPanel}"
         affix-element>
         <div class="navbar-header">
             <div class="product-styling">
             </div>
             <form role="search" class="navbar-form-search" method="post">
-                <ux-input-expand-ng1></ux-input-expand-ng1>
+                <ux-expand-input-ng1></ux-expand-input-ng1>
             </form>
             <div class="primary-bg page-heading">
                 <my-content-header></my-content-header>
@@ -20,7 +20,6 @@
         </ul>
         <div ngClass="{ 'navbar-icon-header': iconHeaderVisible }">
             <ul class="nav navbar-right navbar-top-links">
-                <ux-help-center-menu-ng1></ux-help-center-menu-ng1>
                 <li class="dropdown navbar-top-link search">
                     <a (click)="expandSearch($event)"><i class="hpe-icon hpe-search hp-fw"></i></a>
                 </li>
