@@ -43,7 +43,7 @@ export class PageHeaderComponent implements AfterViewInit, OnDestroy {
 
     expandSearch(event: any) {
         this.expanded = !this.expanded;
-        console.log(this.expanded);
+        
         if (this.expanded) {
             setTimeout(_ => this.searchBar.focus());
         }
