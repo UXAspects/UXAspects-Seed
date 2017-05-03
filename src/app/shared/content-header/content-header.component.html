@@ -1,0 +1,11 @@
+<div class="btn-back-header">
+    <span class="hpe-icon hpe-previous text-primary" (click)="goBack()"></span>
+</div>
+<div class="header-content-left">   
+    <ol class="breadcrumb">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+            <span>{{ breadcrumb }}</span>
+        </li>
+    </ol>
+    <h1 class="heading m-t-nil">{{ heading }}</h1>
+</div>
