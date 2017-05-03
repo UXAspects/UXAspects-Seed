@@ -26,7 +26,6 @@ export class PageHeaderComponent implements AfterViewInit, OnDestroy {
                     let element = mutation.target as HTMLElement;
 
                     if (!element.classList.contains('show-search')) {
-                        console.log("resetting expanded");
                         this.expanded = false;
                     }
 
