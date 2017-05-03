@@ -5,7 +5,6 @@ import { Component, ElementRef, Renderer2, AfterViewInit, OnDestroy } from '@ang
     templateUrl: './page-header.component.html',
     styleUrls: ['./page-header.component.less']
 })
-
 export class PageHeaderComponent implements AfterViewInit, OnDestroy {
 
     expanded = false;
@@ -38,8 +37,6 @@ export class PageHeaderComponent implements AfterViewInit, OnDestroy {
     ngOnDestroy() {
         this.observer.disconnect();
     }
-
-
 
     expandSearch(event: any) {
         this.expanded = !this.expanded;
