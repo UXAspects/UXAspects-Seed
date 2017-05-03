@@ -42,7 +42,7 @@ export class LeftNavigationComponent implements OnDestroy {
     }
 
 
-    toggleSideNavigationFn() {
+    toggleSideNavigation() {
         if (this.$navigationMenu.visible()) {
             this.$navigationMenu.hide();
         } else {

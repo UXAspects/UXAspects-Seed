@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 
 @Component({
     selector: 'my-page-header',
@@ -6,24 +6,47 @@ import { Component, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
     styleUrls: ['./page-header.component.less']
 })
 
-export class PageHeaderComponent implements AfterViewInit {
+export class PageHeaderComponent implements AfterViewInit, OnDestroy {
 
-    expanded: boolean;
-    searchInput: HTMLInputElement;
+    expanded = false;
+    navbar: HTMLElement;
+    searchBar: HTMLInputElement;
+    observer: MutationObserver;
 
     constructor(private elementRef: ElementRef) { }
 
     ngAfterViewInit() {
-        this.searchInput = this.elementRef.nativeElement.querySelector('input');
+        this.navbar = this.elementRef.nativeElement.querySelector('.navbar-static-top');
+        this.searchBar = this.elementRef.nativeElement.querySelector('.expand-input input');
+
+        this.observer = new MutationObserver(mutations => {
+            mutations.filter(mutation => mutation.attributeName === 'class')
+                .forEach(mutation => {
+
+                    let element = mutation.target as HTMLElement;
+
+                    if (!element.classList.contains('show-search')) {
+                        console.log("resetting expanded");
+                        this.expanded = false;
+                    }
+
+                });
+        });
+
+        this.observer.observe(this.navbar, { attributes: true });
     }
 
-    goBack() { }
+    ngOnDestroy() {
+        this.observer.disconnect();
+    }
+
+
 
     expandSearch(event: any) {
         this.expanded = !this.expanded;
-
+        console.log(this.expanded);
         if (this.expanded) {
-            setTimeout(_ => this.searchInput.focus());
+            setTimeout(_ => this.searchBar.focus());
         }
     }
 }

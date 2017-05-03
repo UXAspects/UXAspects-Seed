@@ -1,12 +1,12 @@
 <div class="affix-container">
-    <nav class="navbar navbar-static-top navbar-static-top-light" [class.show-search]="expanded" ngClass="{'back-button': backButton, 'content-panel':contentPanel}"
+    <nav class="navbar navbar-static-top navbar-static-top-light" [class.show-search]="expanded" [class.back-button]="backButton" [class.content-panel]="contentPanel"
         affix-element>
         <div class="navbar-header">
             <div class="product-styling">
             </div>
-            <form role="search" class="navbar-form-search" method="post">
+            <div role="search" class="navbar-form-search">
                 <ux-expand-input-ng1></ux-expand-input-ng1>
-            </form>
+            </div>
             <div class="primary-bg page-heading">
                 <my-content-header></my-content-header>
             </div>
@@ -14,11 +14,11 @@
         <ul class="nav navbar-right navbar-top-links">
             <li class="dropdown navbar-top-link show-icon-header-btn">
                 <a class="dropdown-toggle" (click)="iconHeaderVisible = !iconHeaderVisible">
-                    <i class="hpe-icon text-primary" ngClass="iconHeaderVisible ? 'hpe-down' : 'hpe-previous'"></i>
+                    <i class="hpe-icon text-primary" [class.hpe-down]="iconHeaderVisible" [class.hpe-previous]="!iconHeaderVisible"></i>
                 </a>
             </li>
         </ul>
-        <div ngClass="{ 'navbar-icon-header': iconHeaderVisible }">
+        <div [class.navbar-icon-header]="iconHeaderVisible">
             <ul class="nav navbar-right navbar-top-links">
                 <li class="dropdown navbar-top-link search">
                     <a (click)="expandSearch($event)"><i class="hpe-icon hpe-search hp-fw"></i></a>

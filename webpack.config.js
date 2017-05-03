@@ -35,7 +35,14 @@ module.exports = {
             use: 'file-loader?name=assets/[name].[ext]'
         }, {
             test: /\.less$/,
-            use: ['raw-loader', 'less-loader']
+            include: path.join(process.cwd(), 'src', 'app'),
+            use: ['to-string-loader', 'css-loader', 'less-loader']
+        }, {
+            test: /\.less$/,
+            include: path.join(process.cwd(), 'src', 'assets', 'less'),
+            use: ExtractTextPlugin.extract({
+                use: ['css-loader', 'less-loader']
+            })
         }, {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({

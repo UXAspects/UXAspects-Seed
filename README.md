@@ -12,6 +12,5 @@ UX Aspects Seed Project provides a skeleton which can be used to build an applic
 * Run  ```npm install``` from the folder where the code will be downloaded
 * Install [bower(>v1.5)](http://bower.io/#install-bower) using npm ```npm install -g bower```
 * Run ```bower install``` in the seed project folder
-* Run ```webpack```
-* Run ```webpack-dev-server```
+* Run ```npm start```
 * Browse "http://localhost:8080/webpack-dev-server/"
