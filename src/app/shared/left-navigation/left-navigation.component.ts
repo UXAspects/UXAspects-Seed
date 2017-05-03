@@ -46,6 +46,6 @@ export class LeftNavigationComponent implements AfterViewInit, OnDestroy {
             this.$navigationMenu.hide();
         } else {
             this.$navigationMenu.show();
-        };
+        }
     }
 }
