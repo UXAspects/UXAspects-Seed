@@ -1,5 +1,5 @@
 import { PageHeaderComponent } from './../page-header/page-header.component';
-import { Component, Inject, Injectable, HostListener, OnDestroy } from '@angular/core';
+import { Component, Inject, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/fromEvent';
@@ -9,8 +9,7 @@ import 'rxjs/add/operator/debounceTime';
     selector: 'my-left-navigation',
     templateUrl: './left-navigation.component.html'
 })
-@Injectable()
-export class LeftNavigationComponent implements OnDestroy {
+export class LeftNavigationComponent implements AfterViewInit, OnDestroy {
 
     previousWindowWidth: number;
     collapseWidth: number;
