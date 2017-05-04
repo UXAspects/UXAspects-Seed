@@ -19,6 +19,7 @@ import 'ux-aspects/dist/ng1/ux-aspects-ng1';
 */
 import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
 import '../bower_components/ux-aspects/dist/styles/ux-aspects.css';
+import './assets/less/site.less';
 
 /*
     Import Angular Libraries
