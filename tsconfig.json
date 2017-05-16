@@ -9,6 +9,12 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "lib": ["es2015", "dom"]
+    "lib": ["es2015", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "ux-aspects": [
+        "bower_components/ux-aspects/dist/lib"
+      ]
+    }
   }
 }
