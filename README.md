@@ -22,7 +22,7 @@ bower install
 ```bash
 npm start
 ```
-5. The documentation site is hosted at [https://localhost:8080/](https://localhost:8080/). This will automatically reload when changes are made.
+5. The documentation site is hosted at [http://localhost:8080/](https://localhost:8080/). This will automatically reload when changes are made.
 
 
 # License
