@@ -14,15 +14,11 @@ git clone https://github.com/UXAspects/UXAspects-Seed.git
 ```bash
 npm install
 ```
-3. Run bower install in the repository directory:
-```bash
-bower install
-```
-4. Build the project and start the development server. This will automatically rebuild when source changes are made.
+3. Build the project and start the development server. This will automatically rebuild when source changes are made.
 ```bash
 npm start
 ```
-5. The documentation site is hosted at [http://localhost:8080/](https://localhost:8080/). This will automatically reload when changes are made.
+4. The documentation site is hosted at [http://localhost:8080/](https://localhost:8080/). This will automatically reload when changes are made.
 
 
 # License

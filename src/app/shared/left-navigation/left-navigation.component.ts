@@ -1,7 +1,7 @@
 import { PageHeaderComponent } from './../page-header/page-header.component';
 import { Component, Inject, AfterViewInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from "@angular/router";
-import { Observable } from "rxjs/Observable";
+import { Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 
@@ -28,7 +28,7 @@ export class LeftNavigationComponent implements AfterViewInit, OnDestroy {
         } else if (window.innerWidth >= this.collapseWidth && !this.$navigationMenu.visible() && this.previousWindowWidth < this.collapseWidth) {
             this.$navigationMenu.show();
         }
-        //store the old screen position so it only shows/hides when required and not every resize
+        // store the old screen position so it only shows/hides when required and not every resize
         this.previousWindowWidth = window.innerWidth;
     }
 
