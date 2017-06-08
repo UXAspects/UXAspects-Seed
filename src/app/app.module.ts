@@ -10,7 +10,7 @@ import { PageHeaderComponent} from './shared/page-header/page-header.component';
 import { LeftNavigationComponent } from './shared/left-navigation/left-navigation.component';
 import { ContentHeaderComponent } from './shared/content-header/content-header.component';
 import { SampleComponent } from './components/samples/sample/sample.component';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import './wrappers/expand-input-wrapper/ux-expand-input-ng1.directive.ts';
 
 // create a singleton of the upgrade adapter
@@ -52,7 +52,7 @@ export class AppModule {
     ngDoBootstrap() { }
 }
 
-upgradeAdapter.upgradeNg1Provider('$navigationMenu')
+upgradeAdapter.upgradeNg1Provider('$navigationMenu');
 
 app.directive('myApp', upgradeAdapter.downgradeNg2Component(AppComponent) as angular.IDirectiveFactory);
 

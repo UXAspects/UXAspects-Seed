@@ -6,19 +6,14 @@ import * as $ from 'jquery';
 (<any>window).jQuery = $;
 
 import 'bootstrap';
-
-/*
-  Import Angular 1 Components and their dependencies
-*/
 import 'angular';
-
-import 'ux-aspects/dist/ng1/ux-aspects-ng1';
+import '@ux-aspects/ux-aspects/dist/ng1/ux-aspects-ng1';
 
 /*
   Import CSS
 */
-import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
-import '../bower_components/ux-aspects/dist/styles/ux-aspects.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@ux-aspects/ux-aspects/dist/styles/ux-aspects.css';
 import './assets/less/site.less';
 
 /*

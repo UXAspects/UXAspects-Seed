@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -18,9 +17,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
-        modules: ["node_modules", "bower_components"],
-        descriptionFiles: ["package.json", "bower.json"]
+        extensions: ['.ts', '.js']
     },
     
     module: {
