@@ -1,6 +1,6 @@
 # UX Aspects Seed
 
-The easiest way to get started with UX Aspects is to download the seed project, a hybrid Angular template project including all the necessary dependencies and configuration to start building a modern web application.
+The easiest way to get started with [UX Aspects](https://uxaspects.github.io/UXAspects) is to download the seed project, a hybrid Angular template project including all the necessary dependencies and configuration to start building a modern web application.
 
 # Getting Started
 
