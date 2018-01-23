@@ -1,6 +1,12 @@
-# UxAspectsSeed
+# UX Aspects Seed
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
+The easiest way to begin using [UX Aspects](https://uxaspects.github.io/UXAspects) is to use the Angular CLI tool. This repository contains an application created using the Angular CLI along with all UX Aspects packages imported and configured and has the basic application structure and navigation in place. It also is a hybrid application allowing AngularJS components and services to be easily used within it.
+
+## Getting Started
+
+- Clone this repository.
+- Run `npm install`.
+- Run `ng serve` to start the development server.
 
 ## Development server
 
@@ -25,3 +31,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## License
+
+UX Aspects code is released under the Apache 2.0 License.
