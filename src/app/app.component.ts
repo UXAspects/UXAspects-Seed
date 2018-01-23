@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Breadcrumb, PageHeaderIconMenu } from '@ux-aspects/ux-aspects';
 import { Subscription } from 'rxjs/Subscription';
+import { filter } from 'rxjs/operators/filter';
 
 @Component({
   selector: 'app-root',
@@ -66,7 +67,7 @@ export class AppComponent implements OnDestroy {
     router.initialNavigation();
 
     // watch for changes to the active route
-    this._subscription = router.events.filter(event => event instanceof NavigationEnd).subscribe(this.update.bind(this));
+    this._subscription = router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(this.update.bind(this));
   }
 
   /**
