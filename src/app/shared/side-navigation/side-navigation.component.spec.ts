@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SideNavigationComponent } from './side-navigation.component';
+
+declare const $: any;
 
 describe('SideNavigationComponent', () => {
   let component: SideNavigationComponent;
@@ -8,7 +11,13 @@ describe('SideNavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideNavigationComponent ]
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [ SideNavigationComponent ],
+      providers: [
+        { provide: '$navigationMenu', useValue: new MockMenuService() }
+      ]
     })
     .compileComponents();
   }));
@@ -16,6 +25,9 @@ describe('SideNavigationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SideNavigationComponent);
     component = fixture.componentInstance;
+    $.fn.extend({
+      metisMenu: function() {}
+    });
     fixture.detectChanges();
   });
 
@@ -23,3 +35,24 @@ describe('SideNavigationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+export class MockMenuService implements NavigationMenuService {
+
+  show(): void { }
+
+  hide(): void { }
+
+  visible(): boolean {
+    return true;
+  }
+
+  collapseAtWidth(): number {
+    return 200;
+  }
+
+  setCollapseAtWidth(width: number): void { }
+
+  setDefaultCollapseAtWidth(): void { }
+
+}
