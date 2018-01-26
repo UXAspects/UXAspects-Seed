@@ -1,0 +1,47 @@
+<!-- Menu Collapse/Expand Button -->
+<div class="nav-menu-btn-container nav-menu-btn-container-dark">
+  <a class="nav-menu-toggle-btn" (click)="toggle()">
+    <i class="hpe-icon hpe-menu"></i>
+  </a>
+</div>
+
+<!-- Side Menu Contents -->
+<nav class="navbar-static-side-container navbar-static-side-container-light">
+
+  <!-- Side Menu Items -->
+  <div class="navbar-default navbar-static-side navbar-static-side-light" role="navigation">
+
+    <ul class="nav" id="side-menu">
+
+      <!-- Side Menu Logo and Brand -->
+      <li class="nav-header nav-header-dark">
+
+        <a class="logo-element-container">
+          <div class="logo-element-image"></div>
+          <div class="logo-element-text">UX Aspects</div>
+        </a>
+
+      </li>
+
+      <!-- Side Menu Item Links -->
+      <li routerLinkActive="active selected">
+
+        <!-- Parent Menu Item -->
+        <a>
+          <i class="hpe-icon hpe-clone"></i>
+          <span class="nav-label">Samples</span>
+          <span class="hpe-icon hpe-collapse arrow"></span>
+        </a>
+
+        <!-- Child Menu Item -->
+        <ul routerLinkActive="in" class="nav nav-second-level">
+          <li routerLinkActive="active">
+            <a routerLink="samples/sample-one">Sample 1</a>
+          </li>
+        </ul>
+
+      </li>
+
+    </ul>
+  </div>
+</nav>

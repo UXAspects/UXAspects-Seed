@@ -1,60 +1,70 @@
-declare var angular: ng.IAngularStatic;
-
-let app = angular.module('app', ['ux-aspects']);
-
-import { NgModule, forwardRef, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { UpgradeAdapter } from '@angular/upgrade';
-import { AppComponent } from './app.component';
-import { PageHeaderComponent} from './shared/page-header/page-header.component';
-import { LeftNavigationComponent } from './shared/left-navigation/left-navigation.component';
-import { ContentHeaderComponent } from './shared/content-header/content-header.component';
-import { SampleComponent } from './components/samples/sample/sample.component';
+import { NgModule, Injector } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import './wrappers/expand-input-wrapper/ux-expand-input-ng1.directive.ts';
+import { UpgradeModule, downgradeComponent, setAngularJSGlobal } from '@angular/upgrade/static';
+import { PageHeaderModule } from '@ux-aspects/ux-aspects';
+import * as angular from 'angular';
+import '@ux-aspects/ux-aspects/ng1/ux-aspects-ng1';
 
-// create a singleton of the upgrade adapter
-export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
-const APPROUTES: Routes = [
-    {
-        path: 'samples',
-        data: {
-            title: 'Sample'
-        },
-        children: [{
-            path: 'sample',
-            component: SampleComponent,
-            data: {
-                title: 'Sample 1'
-            }
-        }]
-    },
-    { path: '', redirectTo: '/samples/sample', pathMatch: 'full' },
-    { path: '**', component: SampleComponent }
+const routes: Routes = [
+  {
+    path: 'samples',
+    loadChildren: './samples/samples.module#SamplesModule',
+    data: {
+      header: 'Samples'
+    }
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'samples'
+  }
 ];
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(APPROUTES, { useHash: true, initialNavigation: false })
-    ],
-    declarations: [
-        AppComponent,
-        PageHeaderComponent,
-        LeftNavigationComponent,
-        ContentHeaderComponent,
-        SampleComponent,
-        upgradeAdapter.upgradeNg1Component('uxExpandInputNg1'),
-    ]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    SharedModule,
+    PageHeaderModule,
+    UpgradeModule
+  ],
+  providers: [
+    {
+      provide: '$rootScope',
+      useFactory: (injector: Injector) => injector.get('$rootScope'),
+      deps: ['$injector']
+    },
+    {
+      provide: '$navigationMenu',
+      useFactory: (injector: Injector) => injector.get('$navigationMenu'),
+      deps: ['$injector']
+    }
+  ],
+  entryComponents: [
+    AppComponent
+  ]
 })
 export class AppModule {
-    ngDoBootstrap() { }
+
+  constructor(private _upgrade: UpgradeModule) { }
+
+  ngDoBootstrap() {
+    this._upgrade.bootstrap(document.body, ['app'], { strictDi: true });
+  }
 }
 
-upgradeAdapter.upgradeNg1Provider('$navigationMenu');
+/*
+  AngularJS Module
+*/
+setAngularJSGlobal(angular);
 
-app.directive('myApp', upgradeAdapter.downgradeNg2Component(AppComponent) as angular.IDirectiveFactory);
+angular.module('app', ['ux-aspects'])
+  .directive('appRoot', downgradeComponent({ component: AppComponent }) as angular.IDirectiveFactory);
 
-// bootstrap the Angular 1 application here 
-upgradeAdapter.bootstrap(document.documentElement, ['app']);

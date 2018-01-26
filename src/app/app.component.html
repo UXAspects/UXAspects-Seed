@@ -1,6 +1,15 @@
-<my-left-navigation></my-left-navigation>
+<div class="wrapper">
+  
+  <app-side-navigation></app-side-navigation>
 
-<div class="page-content page-content-navbar-top-light">
-    <my-page-header></my-page-header>
-    <router-outlet></router-outlet>
+  <div class="page-content">
+    <ux-page-header [header]="header" [backVisible]="false" [crumbs]="breadcrumbs" [iconMenus]="menus"></ux-page-header>
+
+    <!--Main Content-->
+    <div class="wrapper-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
 </div>
