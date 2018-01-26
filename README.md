@@ -1,6 +1,6 @@
 # UX Aspects Seed
 
-The easiest way to begin using [UX Aspects](https://uxaspects.github.io/UXAspects) is to use the Angular CLI tool. This repository contains an application created using the Angular CLI along with all UX Aspects packages imported and configured and has the basic application structure and navigation in place. It also is a hybrid application allowing AngularJS components and services to be easily used within it.
+This is a starter project, suitable for building a new web application using [UX Aspects](https://uxaspects.github.io/UXAspects). Since it is built with Angular CLI, it is easy to extend with new pages and components. It is configured as a hybrid application, allowing use of both Angular and AngularJS components.
 
 ## Getting Started
 
