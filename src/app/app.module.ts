@@ -3,9 +3,6 @@ import { NgModule, Injector } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UpgradeModule, downgradeComponent, setAngularJSGlobal } from '@angular/upgrade/static';
 import { PageHeaderModule } from '@ux-aspects/ux-aspects';
-import * as angular from 'angular';
-import '@ux-aspects/ux-aspects/ng1/ux-aspects-ng1';
-
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -66,5 +63,5 @@ export class AppModule {
 setAngularJSGlobal(angular);
 
 angular.module('app', ['ux-aspects'])
-  .directive('appRoot', downgradeComponent({ component: AppComponent }) as angular.IDirectiveFactory);
+  .directive('appRoot', downgradeComponent({ component: AppComponent }) as ng.IDirectiveFactory);
 
