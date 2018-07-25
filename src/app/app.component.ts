@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Breadcrumb, PageHeaderIconMenu } from '@ux-aspects/ux-aspects';
-import { Subscription } from 'rxjs/Subscription';
-import { filter } from 'rxjs/operators/filter';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',

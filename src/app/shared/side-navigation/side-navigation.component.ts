@@ -1,9 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, Inject } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import { Subscription } from 'rxjs/Subscription';
-
-declare const $: any;
+import { fromEvent ,  Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-side-navigation',
