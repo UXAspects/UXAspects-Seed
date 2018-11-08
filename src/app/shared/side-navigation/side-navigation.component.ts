@@ -44,7 +44,7 @@ export class SideNavigationComponent implements AfterViewInit, OnDestroy {
     this._collapsed = collapse;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     $('#side-menu').metisMenu();
   }
 
