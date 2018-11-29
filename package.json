@@ -1,7 +1,7 @@
 {
   "name": "ux-aspects-seed",
   "description": "A hybrid Angular template project including all the necessary dependencies and configuration to start building a modern web application with UX Aspects.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "license": "Apache 2.0",
   "keywords": [
     "responsive",
