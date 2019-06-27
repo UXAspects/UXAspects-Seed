@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, OnDestroy, Inject } from '@angular/core';
-import { fromEvent ,  Subscription } from 'rxjs';
+import { AfterViewInit, Component, Inject, OnDestroy } from '@angular/core';
+import { NavigationMenuService } from '@ux-aspects/ux-aspects';
+import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -9,11 +10,14 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class SideNavigationComponent implements AfterViewInit, OnDestroy {
 
+  private _menuService: NavigationMenuService;
   private _subscription: Subscription;
   private _collapsed: boolean = false;
-  private _limit: number = this._menuService.collapseAtWidth();
+  private _limit: number;
 
-  constructor(@Inject('$navigationMenu') private _menuService: NavigationMenuService) {
+  constructor(@Inject('$navigationMenu') menuService: any) {
+    this._menuService = menuService;
+    this._limit = this._menuService.collapseAtWidth();
     this._subscription = fromEvent(window, 'resize').pipe(debounceTime(200)).subscribe(this.resize.bind(this));
   }
 
@@ -27,7 +31,7 @@ export class SideNavigationComponent implements AfterViewInit, OnDestroy {
   /**
    * Handle window resize - collapse if window gets too small
    */
-  resize(event: Event): void {
+  resize(): void {
 
     // determine if the menu should be collapsed
     const collapse = window.innerWidth < this._limit;
