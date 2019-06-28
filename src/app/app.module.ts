@@ -9,7 +9,7 @@ import { SharedModule } from './shared/shared.module';
 const routes: Routes = [
   {
     path: 'samples',
-    loadChildren: './samples/samples.module#SamplesModule',
+    loadChildren: () => import('./samples/samples.module').then(m => m.SamplesModule),
     data: {
       header: 'Samples'
     }
