@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Inject, OnDestroy } from '@angular/core';
-import { NavigationMenuService } from '@ux-aspects/ux-aspects';
+import { NavigationMenuService } from '@ux-aspects/ux-aspects-ng1';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
