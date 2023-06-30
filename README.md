@@ -1,5 +1,7 @@
 # UX Aspects Seed
 
+> **Note:** The seed project is no longer the recommended way to start a new application using UX Aspects.
+
 This is a starter project, suitable for building a new web application using [UX Aspects](https://uxaspects.github.io/UXAspects). Since it is built with Angular CLI, it is easy to extend with new pages and components. It is configured as a hybrid application, allowing use of both Angular and AngularJS components.
 
 ## Getting Started
